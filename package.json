@@ -1,0 +1,13 @@
+{
+  "name": "google-sign-up-form",
+  "version": "0.0.0",
+  "description": "Imitate Google's Sign-Up form",
+  "dependencies": {
+    "pug-cli": "^1.0.0-alpha",
+    "stylus": "^0.54.5"
+  },
+  "scripts": {
+    "test": "pug --pretty index.pug && stylus style.stylus"
+  },
+  "license": "MIT"
+}
