@@ -1,6 +1,7 @@
 'use strict'
 
 const MIN_PASSWORD_LENGTH = 8
+const MIN_PHONE_LENGTH = 9
 
 const allInputElementSelectors = {
   all: 'input, select',
@@ -10,6 +11,7 @@ const allInputElementSelectors = {
   number: 'input.number',
   integer: 'input.integer',
   positive: 'input.positive',
+  phone: 'input.phone',
   email: 'input[type="email"]'
 }
 
@@ -27,6 +29,7 @@ const validate = {
     number: isFinite,
     integer: string => parseInt(string) === Number(string),
     positive: string => Number(string) > 0,
+    phone: string => string.length > MIN_PHONE_LENGTH,
     email: string => {
       const array = string.split('@')
       return array.length === 2 && array.every(validate.fn.username)
@@ -45,6 +48,8 @@ const validate = {
     number: 'Must be a number',
     integer: 'Must be an integer',
     positive: 'Must be greater than zero',
+    phone:
+      'Must contain more than ' + MIN_PHONE_LENGTH + ' number characters',
     email:
       'Invalid e-mail'
   }
