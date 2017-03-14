@@ -27,30 +27,50 @@ const validate = {
     }
   },
   msg: {
-    all: 'Cannot leave this field empty',
-    username: 'Invalid username',
-    password: 'Password must be longer than ' + MIN_PASSWORD_LENGTH,
-    repassword: 'Password does not match',
-    email: 'Invalid e-mail'
+    all:
+      'Cannot leave this field empty',
+    username:
+      'Invalid username',
+    password:
+      'Password must be longer than ' + MIN_PASSWORD_LENGTH +
+      ', must contain lowercase letters, uppercase letters, and number characters',
+    repassword:
+      'Password does not match',
+    email:
+      'Invalid e-mail'
   }
 }
 
 for (const name in allInputElementSelectors) {
   const collection = document.querySelectorAll(allInputElementSelectors[name])
   const fn = validate.fn[name]
-  const msg = validate.msg[name]
   const event = ['change', 'keydown', 'focus', 'blur']
-  const send = (message, input) => {
-    console.info({message, input})
-  }
   collection.forEach(
     element => event.forEach(
       type => element.addEventListener(
         type,
-        ({target}) =>
-          fn(target.value) || send(msg, target),
+        ({target: {value, classList}}) =>
+          classList[fn(value) ? 'remove' : 'add']('invalid'),
         false
       )
     )
   )
+}
+
+document.getElementById('submit-button').addEventListener('click', onClickedSubmit, false)
+
+function onClickedSubmit (event) {
+  event.preventDefault()
+  for (const name in allInputElementSelectors) {
+    const collection = Array.from(document.querySelectorAll(allInputElementSelectors[name]))
+    const fn = validate.fn[name]
+    const msg = validate.msg[name]
+    const invalid = collection.find(element => !fn(element.value))
+    if (invalid) {
+      window.alert('ERROR: ' + msg)
+      invalid.focus()
+      return
+    }
+  }
+  document.getElementById('main-form').submit()
 }
