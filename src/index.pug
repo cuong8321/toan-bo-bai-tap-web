@@ -52,8 +52,8 @@ html(lang = 'en')
         option(hidden checked) Month
         each month in monthlist
           option(value = month)= capitalize(month)
-      +text-box('birthday-day', 'Day').short
-      +text-box('birthday-year', 'Year').short
+      +text-box('birthday-day', 'Day').short.number.integer
+      +text-box('birthday-year', 'Year').short.number.integer
       br
       label(for = 'gender') Gender
       br
@@ -64,7 +64,7 @@ html(lang = 'en')
         option(value = 'other') Other
         option(value = 'secret') Rather not say
       br
-      +lb-text-box('phone-number', '+84')
+      +lb-text-box('phone-number', '+84').number.integer.positive
         | Mobile phone
       br
       .email

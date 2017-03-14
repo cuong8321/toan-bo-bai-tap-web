@@ -7,6 +7,9 @@ const allInputElementSelectors = {
   username: 'input#email',
   password: 'input[type="password"]',
   repassword: 'input#re-password[type="password"]',
+  number: 'input.number',
+  integer: 'input.integer',
+  positive: 'input.positive',
   email: 'input[type="email"]'
 }
 
@@ -21,6 +24,9 @@ const validate = {
       [...string].some(char => /[0-9]/.test(char)),
     repassword: string =>
       document.getElementById('password').value === string,
+    number: isFinite,
+    integer: string => parseInt(string) === Number(string),
+    positive: string => Number(string) > 0,
     email: string => {
       const array = string.split('@')
       return array.length === 2 && array.every(validate.fn.username)
