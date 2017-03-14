@@ -2,12 +2,16 @@
 - const {join} = require('path')
 - const license = readFileSync(join(projdir, 'LICENSE.md'), {encoding: 'utf8'})
 - const capitalize = getlib('capitalize')
+- const dash2cspc = getlib('dash-to-camel-and-spaces')
 
 mixin style(href)
   link(rel = 'stylesheet' type = 'text/css' href = href)&attributes(attributes)
 
 mixin num-input(id)
-  input(id = id name = id type = 'text' placeholder = 'Insert number here...')
+  .input-container(id = id + '-container')
+    label(for = id)= dash2cspc(id) + ':'
+    input(id = id name = id type = 'text' placeholder = 'Insert number here...')
+    span(id = id + '-message')
 
 mixin calc-button(name)
   button(id = 'calc-' + name + '-button' type = 'button')= capitalize(name)
