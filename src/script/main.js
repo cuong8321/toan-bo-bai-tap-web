@@ -67,7 +67,8 @@ function onClickedSubmit (event) {
     const msg = validate.msg[name]
     const invalid = collection.find(element => !fn(element.value))
     if (invalid) {
-      window.alert('ERROR: ' + msg)
+      const {id} = invalid
+      window.alert(`ERROR: At field '${id}': ${msg}\nPlease edit ${id}`)
       invalid.focus()
       return
     }
