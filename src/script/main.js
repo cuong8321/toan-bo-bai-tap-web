@@ -16,11 +16,9 @@ for (const key in operators) {
   const handle = () => {
     const left = operandLeft.value
     const right = operandRight.value
-    if (left && right) {
-      output.textContent = fn(...[left, right].map(Number))
-    } else {
-      output.textContent = 'You cannot leave fields empty!'
-    }
+    return left && right
+      ? fn(...[left, right].map(Number))
+      : 'You cannot leave fields empty!'
   }
   document
     .getElementById('calc-' + key + '-button')
