@@ -3,7 +3,7 @@
 const MIN_PASSWORD_LENGTH = 8
 
 const allInputElementSelectors = {
-  all: 'input',
+  all: 'input, select',
   username: 'input#email',
   password: 'input[type="password"]',
   repassword: 'input#re-password[type="password"]',
