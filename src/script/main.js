@@ -11,14 +11,12 @@ const operators = {
   divide: (a, b) => a / b
 }
 
+operandLeft.focus()
+
 for (const key in operators) {
   const fn = operators[key]
   const handle = () => {
-    const left = operandLeft.value
-    const right = operandRight.value
-    output.textContent = left && right
-      ? fn(...[left, right].map(Number))
-      : 'You cannot leave fields empty!'
+    output.textContent = fn(...[operandLeft, operandRight].map(x => Number(x.value)))
   }
   document
     .getElementById('calc-' + key + '-button')
