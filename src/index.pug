@@ -5,6 +5,7 @@ block everything
     head
       meta(charset = 'utf-8')
       title Simple Calculus
+
     body
       form#main-form
         #input-container
@@ -17,4 +18,15 @@ block everything
           +calc-button('divide')
         #output-container
           output#output
+
+      footer#main-footer
+        hr
+
+        :md(breaks)
+          Copyright (c) 2017 Hoàng Văn Khải
+          All right reserved
+
+          This software comes with absolutely no warranty
+          See the [MIT License](https://github.com/KSXGitHub/add-sub-mul-div/blob/master/LICENSE.md) for more details
+
       script(type = 'text/javascript' src = 'script/main.js')
