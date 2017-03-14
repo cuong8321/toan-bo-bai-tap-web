@@ -50,7 +50,8 @@ const validate = {
     integer: 'Must be an integer',
     positive: 'Must be greater than zero',
     phone:
-      'Must contain more than ' + MIN_PHONE_LENGTH + ' number characters',
+      'Must be longer than ' + MIN_PHONE_LENGTH +
+      ' consist of only numbers (0-9)',
     email:
       'Invalid e-mail'
   }
