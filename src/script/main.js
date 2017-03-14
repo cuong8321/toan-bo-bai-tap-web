@@ -29,7 +29,20 @@ operandLeft.addEventListener('change', validate, false)
 operandRight.addEventListener('change', validate, false)
 
 function validate ({target}) {
-  if (isFinite(target.value)) return
-  target.value = ''
-  target.focus()
+  const {value} = target
+  const message = document.getElementById(target.id + '-message')
+  if (!value) {
+    message.textContent = 'This field is empty'
+    reenter(target)
+  } else if (!isFinite(value)) {
+    message.textContent = 'This field is invalid'
+    reenter(target)
+  } else {
+    message.textContent = ''
+  }
+}
+
+function reenter (input) {
+  input.value = ''
+  input.focus()
 }
