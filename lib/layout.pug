@@ -12,6 +12,6 @@ mixin num-input(id)
   input(id = id name = id type = 'text' placeholder = 'Insert number here...')
 
 mixin calc-button(name)
-  button(id = 'calc-' + name + '-button')= capitalize(name)
+  button(id = 'calc-' + name + '-button' type = 'button')= capitalize(name)
 
 block everything
