@@ -1,7 +1,8 @@
-- const {readFileSync} = require('fs')
-- const {join} = require('path')
-- const license = readFileSync(join(projdir, 'LICENSE.md'), {encoding: 'utf8'})
-- const dash2cspc = getlib('dash-to-camel-and-spaces')
+-
+  const {readFileSync} = require('fs')
+  const {join} = require('path')
+  const license = readFileSync(join(projdir, 'LICENSE.md'), {encoding: 'utf8'})
+  const dash2cspc = getlib('dash-to-camel-and-spaces')
 
 mixin style(href)
   link(rel = 'stylesheet' type = 'text/css' href = href)&attributes(attributes)
