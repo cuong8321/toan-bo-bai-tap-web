@@ -25,8 +25,10 @@ for (const key in operators) {
     .addEventListener('click', handle, false)
 }
 
-operandLeft.addEventListener('change', validate, false)
-operandRight.addEventListener('change', validate, false)
+for (const event of ['change', 'keydown', 'focus', 'blur']) {
+  operandLeft.addEventListener(event, validate, false)
+  operandRight.addEventListener(event, validate, false)
+}
 
 function validate ({target}) {
   const {value} = target
@@ -43,6 +45,5 @@ function validate ({target}) {
 }
 
 function reenter (input) {
-  input.value = ''
   input.focus()
 }
