@@ -10,10 +10,12 @@ const stylus = require('stylus')
 const markdown = require('jstransformer-markdown-it')
 const less = require('less')
 const jtry = require('just-try')
+const rgxmap = require('./build-rules.js')
 const projdir = dirname(__dirname)
 const src = join(projdir, 'src')
 const out = join(projdir, 'out')
 const lib = join(projdir, 'lib')
+const outfolder = new Set()
 
 compile(src, out, 0)
 info('done.')
@@ -26,29 +28,15 @@ function compile (source, target, level) {
   } else if (stats.isFile()) {
     const sourcecode = readFileSync(source)
     const {dir, name} = parse(target)
-    switch (extname(source).toLowerCase()) {
-      case '.pug': case '.jade': {
-        const filters = {md: renderMarkdownIt}
-        const fn = pug.compile(sourcecode.toString('utf8'), {doctype: 'html', pretty: true, filename: source, filters})
-        const html = fn({projdir, src, out, source, target, dir, name, sourcecode, require, getlib, jreq})
-        writeFileSync(join(dir, name + '.html'), html, {encoding: 'utf8'})
-        break
+    rgxmap.some(([regex, suffix, compile]) => {
+      if (regex.test(source)) {
+        const target = join(dir, name + suffix)
+        const locals = {projdir, src, out, source, target, dir, name, sourcecode, require, getlib, jreq}
+        const output = compile(sourcecode, locals)
+        writeFileSync(target, output)
+        return true
       }
-      case '.stylus': case '.styl': {
-        const css = stylus.render(sourcecode.toString('utf8'))
-        writeFileSync(join(dir, name + '.css'), css, {encoding: 'utf8'})
-        break
-      }
-      case '.less': {
-        less.render(sourcecode.toString('utf8')).then(
-          ({css}) => writeFileSync(join(dir, name + '.css'), css, {encoding: 'utf8'})
-        )
-        break
-      }
-      default: {
-        writeFileSync(target, sourcecode, {encoding: 'utf8'})
-      }
-    }
+    }) || writeFileSync(target, sourcecode)
   } else {
     throw new Error(`Invalid type of fs entry: ${source}`)
   }
