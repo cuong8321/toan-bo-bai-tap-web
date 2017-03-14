@@ -1,0 +1,84 @@
+
+*
+  position relative
+
+:not(b):not(.bold)
+  font-weight normal
+
+body
+  font-family 'Roboto', 'Product Sans', 'Segoe UI', 'Verdana', 'Geneva', 'Arial', 'Helvetica', sans-serif
+
+.center
+  text-align center
+
+#main-form
+  position absolute
+  right 5px
+  background rgba(0, 0, 0, 0.1)
+  padding 10px
+  margin 10px
+
+#submit
+  width 100px
+  height 2.5em
+  float right
+  margin-top 20px
+  display block
+  color white
+  background #3079ed
+  &:hover
+    box-shadow 0px 0px 3px blue
+  &:active
+    background #2345ff
+
+input, select, button
+  border 1px solid transparent
+  height 2em
+  border-radius 2px
+  &:focus
+    outline none
+    border 1px solid #999999
+
+select, button
+  &:focus
+    box-shadow 0px 1px 2px #888888
+
+input, textarea
+  box-sizing border-box
+  width 100%
+  padding-left 0.5em
+  padding-right 0.5em
+  &:focus
+    box-shadow inset 1px 1px 3px #888888
+    border 1px solid #4d90fe
+
+select:hover
+  box-shadow 0px 1px 2px #345678
+
+label
+  margin-top 10px
+  display inline-block
+
+width = 400px
+
+input, select
+  width width + 10px
+
+.half
+  width (width / 2)
+
+.short
+  width (width / 3)
+
+.email
+  width width + 10px
+
+.email::after
+  content '@gmail.com'
+  text-align right
+  display inline-block
+  float right
+  clear both
+  position relative
+  top -1.7em
+  opacity 0.5
