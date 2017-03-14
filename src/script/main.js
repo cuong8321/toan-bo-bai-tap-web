@@ -42,6 +42,9 @@ const validate = {
       ', must contain lowercase letters, uppercase letters, and number characters',
     repassword:
       'Password does not match',
+    number: 'Must be a number',
+    integer: 'Must be an integer',
+    positive: 'Must be greater than zero',
     email:
       'Invalid e-mail'
   }
