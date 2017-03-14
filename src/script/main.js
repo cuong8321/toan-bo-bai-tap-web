@@ -1,43 +1,53 @@
 'use strict'
 
-const operandLeft = document.getElementById('operand-left')
-const operandRight = document.getElementById('operand-right')
-const output = document.getElementById('output')
+const MIN_PASSWORD_LENGTH = 8
 
-const operators = {
-  add: (a, b) => a + b,
-  subtract: (a, b) => a - b,
-  multiply: (a, b) => a * b,
-  divide: (a, b) => b ? a / b : 'Thou shalt not divide by zero'
+const allInputElementSelectors = {
+  all: 'input',
+  username: 'input#email',
+  password: 'input[type="password"]',
+  repassword: 'input#re-password[type="password"]',
+  email: 'input[type="email"]'
 }
 
-operandLeft.focus()
-
-for (const key in operators) {
-  const fn = operators[key]
-  const handle = () => {
-    output.textContent = fn(...[operandLeft, operandRight].map(x => Number(x.value)))
+const validate = {
+  fn: {
+    all: Boolean,
+    username: string => /[a-zA-Z0-9-_\.]*/.test(string),
+    password: string =>
+      string.length > MIN_PASSWORD_LENGTH &&
+      [...string].some(char => /[a-z]/.test(char)) &&
+      [...string].some(char => /[A-Z]/.test(char)) &&
+      [...string].some(char => /[0-9]/.test(char)),
+    email: string => {
+      const array = string.split('@')
+      return array.length === 2 && array.every(validate.fn.username)
+    }
+  },
+  msg: {
+    all: 'Cannot leave this field empty',
+    username: 'Invalid username',
+    password: 'Password must be longer than ' + MIN_PASSWORD_LENGTH,
+    email: 'Invalid e-mail'
   }
-  document
-    .getElementById('calc-' + key + '-button')
-    .addEventListener('click', handle, false)
 }
 
-for (const event of ['change', 'keydown', 'focus', 'blur']) {
-  operandLeft.addEventListener(event, validate, false)
-  operandRight.addEventListener(event, validate, false)
-}
-
-function validate ({target}) {
-  const {value} = target
-  const message = document.getElementById(target.id + '-message')
-  if (!value) {
-    message.textContent = 'This field is empty'
-    target.focus()
-  } else if (!isFinite(value)) {
-    message.textContent = 'This field is invalid'
-    target.focus()
-  } else {
-    message.textContent = ''
+for (const name in allInputElementSelectors) {
+  const collection = document.querySelectorAll(allInputElementSelectors[name])
+  const fn = validate.fn[name]
+  const msg = validate.msg[name]
+  const event = ['change', 'keydown', 'focus', 'blur']
+  const send = (message, input) => {
+    console.info({message, input})
   }
+  collection.forEach(
+    element => event.forEach(
+      type => element.addEventListener(
+        type,
+        ({target}) =>
+          fn(target.value) || send(msg, target),
+        false
+      )
+    )
+  )
 }
