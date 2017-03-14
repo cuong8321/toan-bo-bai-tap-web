@@ -35,15 +35,11 @@ function validate ({target}) {
   const message = document.getElementById(target.id + '-message')
   if (!value) {
     message.textContent = 'This field is empty'
-    reenter(target)
+    target.focus()
   } else if (!isFinite(value)) {
     message.textContent = 'This field is invalid'
-    reenter(target)
+    target.focus()
   } else {
     message.textContent = ''
   }
-}
-
-function reenter (input) {
-  input.focus()
 }
