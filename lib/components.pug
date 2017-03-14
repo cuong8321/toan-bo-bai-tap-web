@@ -11,3 +11,6 @@ mixin num-input(id)
 
 mixin calc-button(name)
   button(id = 'calc-' + name + '-button' type = 'button')= capitalize(name)
+
+mixin license(text)
+  | !{'\n\n<!--\n' + text || license + '\n-->\n\n'}
