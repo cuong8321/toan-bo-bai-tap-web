@@ -10,7 +10,7 @@ mixin style(href)
 mixin num-input(id)
   .input-container(id = id + '-container')
     label(for = id)= dash2cspc(id) + ':'
-    input(id = id name = id type = 'text' placeholder = 'Insert number here...')
+    input(id = id name = id type = 'text' placeholder = 'Insert number here...' required)
     span(id = id + '-message')
 
 mixin calc-button(name)
