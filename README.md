@@ -1,4 +1,5 @@
-# Homework: Group Website
+# Simple Calculator
+Just with 4 buttons: Add, Subtract, Multiply, Divide
 
 ## Requirements
 
