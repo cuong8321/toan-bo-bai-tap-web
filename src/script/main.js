@@ -11,6 +11,8 @@ const operators = {
   divide: (a, b) => a / b
 }
 
+operandLeft.focus()
+
 for (const key in operators) {
   const fn = operators[key]
   const handle = () => {
@@ -21,11 +23,21 @@ for (const key in operators) {
     .addEventListener('click', handle, false)
 }
 
-operandLeft.addEventListener('change', validate, false)
-operandRight.addEventListener('change', validate, false)
+for (const event of ['change', 'keydown', 'focus', 'blur']) {
+  operandLeft.addEventListener(event, validate, false)
+  operandRight.addEventListener(event, validate, false)
+}
 
 function validate ({target}) {
-  if (isFinite(target.value)) return
-  target.value = ''
-  target.focus()
+  const {value} = target
+  const message = document.getElementById(target.id + '-message')
+  if (!value) {
+    message.textContent = 'This field is empty'
+    target.focus()
+  } else if (!isFinite(value)) {
+    message.textContent = 'This field is invalid'
+    target.focus()
+  } else {
+    message.textContent = ''
+  }
 }

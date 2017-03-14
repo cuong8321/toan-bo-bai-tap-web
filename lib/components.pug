@@ -1,16 +1,20 @@
-- const {readFileSync} = require('fs')
-- const {join} = require('path')
-- const license = readFileSync(join(projdir, 'LICENSE.md'), {encoding: 'utf8'})
-- const capitalize = getlib('capitalize')
+-
+  const {readFileSync} = require('fs')
+  const {join} = require('path')
+  const license = readFileSync(join(projdir, 'LICENSE.md'), {encoding: 'utf8'})
+  const dash2cspc = getlib('dash-to-camel-and-spaces')
 
 mixin style(href)
   link(rel = 'stylesheet' type = 'text/css' href = href)&attributes(attributes)
 
 mixin num-input(id)
-  input(id = id name = id type = 'text' placeholder = 'Insert number here...')
+  .input-container(id = id + '-container')
+    label(for = id)= dash2cspc(id) + ':'
+    input(id = id name = id type = 'text' placeholder = 'Insert number here...' required)
+    span(id = id + '-message')
 
 mixin calc-button(name)
-  button(id = 'calc-' + name + '-button' type = 'button')= capitalize(name)
+  button(id = 'calc-' + name + '-button' type = 'button')= dash2cspc(name)
 
 mixin license(text)
   | !{'\n\n<!--\n' + (text || license) + '\n-->\n\n'}
