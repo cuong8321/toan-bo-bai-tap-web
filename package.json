@@ -3,11 +3,19 @@
   "version": "0.0.0",
   "description": "Imitate Google's Sign-Up form",
   "dependencies": {
-    "pug-cli": "^1.0.0-alpha",
-    "stylus": "^0.54.5"
+    "pug": "^2.0.0-beta11",
+    "stylus": "^0.54.0",
+    "just-try": "^2.0.1",
+    "js-yaml": "^3.6.1",
+    "less": "^2.7.2",
+    "jstransformer-markdown-it": "^2.0.0",
+    "standard": "^8.4.0"
   },
   "scripts": {
-    "test": "pug --pretty index.pug && stylus style.stylus"
+    "compile": "node ./script/compile.js",
+    "preview": "zsh -c 'sensible-browser ./out/index.html &; exit'",
+    "test": "standard && npm run compile"
   },
+  "author": "Hoàng Văn Khải <hvksmr1996@gmail.com>",
   "license": "MIT"
 }
