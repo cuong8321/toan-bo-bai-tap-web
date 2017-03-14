@@ -16,7 +16,7 @@ for (const key in operators) {
   const handle = () => {
     const left = operandLeft.value
     const right = operandRight.value
-    return left && right
+    output.textContent = left && right
       ? fn(...[left, right].map(Number))
       : 'You cannot leave fields empty!'
   }
