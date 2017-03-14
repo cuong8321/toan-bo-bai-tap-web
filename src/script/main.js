@@ -8,7 +8,7 @@ const operators = {
   add: (a, b) => a + b,
   subtract: (a, b) => a - b,
   multiply: (a, b) => a * b,
-  divide: (a, b) => a / b
+  divide: (a, b) => b ? a / b : 'OMG! You just divided by zero!'
 }
 
 operandLeft.focus()
