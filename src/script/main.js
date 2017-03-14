@@ -19,6 +19,8 @@ const validate = {
       [...string].some(char => /[a-z]/.test(char)) &&
       [...string].some(char => /[A-Z]/.test(char)) &&
       [...string].some(char => /[0-9]/.test(char)),
+    repassword: string =>
+      document.getElementById('password').value === string,
     email: string => {
       const array = string.split('@')
       return array.length === 2 && array.every(validate.fn.username)
@@ -28,6 +30,7 @@ const validate = {
     all: 'Cannot leave this field empty',
     username: 'Invalid username',
     password: 'Password must be longer than ' + MIN_PASSWORD_LENGTH,
+    repassword: 'Password does not match',
     email: 'Invalid e-mail'
   }
 }
