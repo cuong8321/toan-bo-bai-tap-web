@@ -1,6 +1,17 @@
-
+- const {readFileSync} = require('fs')
+- const {join} = require('path')
+- const capitalize = getlib('capitalize')
+- const license = readFileSync(join(projdir, 'LICENSE.md'), {encoding: 'utf8'})
 include components.pug
 
 doctype html
 
 | !{'\n\n<!--\n' + license + '\n-->\n\n'}
+
+mixin num-input(id)
+  input(id = id name = id type = 'text' placeholder = 'Insert number here...')
+
+mixin calc-button(name)
+  button(id = 'calc-' + name + '-button')= capitalize(name)
+
+block everything

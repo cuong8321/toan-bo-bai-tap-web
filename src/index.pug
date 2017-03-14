@@ -1,0 +1,19 @@
+extends ../lib/layout.pug
+
+block everything
+  html
+    head
+      meta(charset = 'utf-8')
+      title Simple Calculus
+    body
+      form#main-form
+        #input-container
+          +num-input('operand-left')
+          +num-input('operand-right')
+        #button-container
+          +calc-button('add')
+          +calc-button('subtract')
+          +calc-button('multiply')
+          +calc-button('divide')
+        #output-container
+          output#output
