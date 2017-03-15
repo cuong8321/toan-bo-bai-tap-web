@@ -28,4 +28,4 @@ Open `out` folder
 
 ## License
 
-See [MIT License](./LICENSE.md)
+See [MIT License](https://goo.gl/Xrvkxh)
