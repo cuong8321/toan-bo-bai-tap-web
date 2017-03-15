@@ -27,6 +27,7 @@ npm test
 This repo contains some symlinks to file
 which aren't supported in NTFS file system (i.e. Windows, or at least Git for Windows for some reason).
 It is highly recommended to build stuffs (`npm test`) in an UNIX-like file system (i.e. Use Linux, macOS, FreeBSD, etc).
+Just in case you love Windows so much, Windows 10 has something called [WSL](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
 
 ## Preview
 
