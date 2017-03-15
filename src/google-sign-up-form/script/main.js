@@ -18,7 +18,7 @@ const allInputElementSelectors = {
 const validate = {
   fn: {
     all: Boolean,
-    username: string => /[a-zA-Z0-9-_\.]*/.test(string),
+    username: string => /[a-zA-Z0-9-_.]*/.test(string),
     password: string =>
       string.length > MIN_PASSWORD_LENGTH &&
       [...string].some(char => /[a-z]/.test(char)) &&
