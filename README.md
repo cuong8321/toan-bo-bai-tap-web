@@ -1,4 +1,4 @@
-# Khai's Web Homework
+# Khải's Web Homework
 A bunch of small websites
 
 ## Requirements
