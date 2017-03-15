@@ -1,4 +1,5 @@
-# Homework: Personal Website
+# Google Sign-Up form
+Just a little homework
 
 ## Requirements
 
@@ -8,7 +9,16 @@
 
 ## Building
 
+### Install Dependencies
+
+```bash
+npm install
+npm install --only=dev
 ```
+
+### Build stuffs
+
+```bash
 npm test
 ```
 
@@ -18,4 +28,4 @@ Open `out` folder
 
 ## License
 
-See [MIT License](./LICENSE.md)
+See [MIT License](https://goo.gl/Xrvkxh)

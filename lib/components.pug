@@ -1,57 +1,20 @@
+-
+  const {readFileSync} = require('fs')
+  const {join} = require('path')
+  const license = readFileSync(join(projdir, 'LICENSE.md'), {encoding: 'utf8'})
+  const dash2cspc = getlib('dash-to-camel-and-spaces')
+
 mixin style(href)
   link(rel = 'stylesheet' type = 'text/css' href = href)&attributes(attributes)
 
-mixin zoom-in(id)
-  input.zoom-in(
-    id = (id || 'default-zoom-in')
-    name = 'zoom-in'
-    type = 'radio'
-    checked = !id
-    hidden
-  )&attributes(attributes)
+mixin num-input(id)
+  .input-container(id = id + '-container')
+    label(for = id)= dash2cspc(id) + ':'
+    input(id = id name = id type = 'text' placeholder = 'Insert number here...' required)
+    span(id = id + '-message')
 
-mixin zoom-out-button
-  label.zoom-out-button(for = 'default-zoom-in')&attributes(attributes)
-    block
+mixin calc-button(name)
+  button(id = 'calc-' + name + '-button' type = 'button')= dash2cspc(name)
 
-mixin subtitle(level, name, content)
-  a.subtitle(name = name href = '#' + name)&attributes(attributes)
-    #{'h' + level}.pointer-cursor.heading= content
-
-mixin article(level, name, title, image)
-  -
-    const {rngString} = getlib('random-string')
-    const id = 'checkbox-' + rngString(8)
-  +zoom-in(id)
-  label.zoom-in-target(for = id)&attributes(attributes): article.horizontal.hang-children
-    if image
-      +image-container(image)
-    .text
-      +subtitle(level, name, title)
-      block
-    +zoom-out-button
-
-mixin image-container(src)
-  figure.image-container&attributes(attributes): img.image(src = src)
-
-mixin bgimage-container(url)
-  -
-    const style = {
-      background: `url(${url})`
-    }
-  figure.bgimage-container&attributes(attributes)
-    .bgimage(style = style)
-
-mixin font-icon-container(char, font)
-  figure.font-icon-container&attributes(attributes)
-    .icon(style = {'font-family': font})= char
-
-mixin icon(url)
-  -
-    const style = {
-      'background-image': `url(${url})`,
-      'background-position': 'center',
-      'background-size': 'contain',
-      'background-repeat': 'no-repeat'
-    }
-  .icon(style = style)&attributes(attributes)
+mixin license(text)
+  | !{'\n\n<!--\n' + (text || license) + '\n-->\n\n'}
