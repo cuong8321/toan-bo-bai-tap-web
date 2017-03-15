@@ -1,5 +1,5 @@
-# Google Sign-Up form
-Just a little homework
+# Khai's Web Homework
+A bunch of small websites
 
 ## Requirements
 
