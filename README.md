@@ -22,6 +22,12 @@ npm install --only=dev
 npm test
 ```
 
+### Caution
+
+This repo contains some symlinks to file
+which aren't supported in NTFS file system (i.e. Windows, or at least Git for Windows for some reason).
+It is highly recommended to build stuffs (`npm test`) in an ext2/3/4 file system (i.e. Use Linux, macOS, FreeBSD, etc).
+
 ## Preview
 
 Open `out` folder
