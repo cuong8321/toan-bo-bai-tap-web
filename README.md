@@ -1,5 +1,5 @@
-# Simple Calculator
-Just with 4 buttons: Add, Subtract, Multiply, Divide
+# Google Sign-Up form
+Just a little homework
 
 ## Requirements
 
@@ -28,4 +28,4 @@ Open `out` folder
 
 ## License
 
-See [MIT License](./LICENSE.md)
+See [MIT License](https://goo.gl/Xrvkxh)

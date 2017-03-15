@@ -1,7 +1,7 @@
 {
-  "name": "dkonpkon",
+  "name": "google-sign-up-form",
   "version": "0.0.0",
-  "description": "Just a website",
+  "description": "Imitate Google's Sign-Up form",
   "dependencies": {
     "pug": "^2.0.0-beta11",
     "stylus": "^0.54.0",
@@ -16,6 +16,6 @@
     "preview": "zsh -c 'sensible-browser ./out/index.html &; exit'",
     "test": "standard && npm run compile"
   },
-  "author": "Hoang Van Khai <hvksmr1996@gmail.com>",
+  "author": "Hoàng Văn Khải <hvksmr1996@gmail.com>",
   "license": "MIT"
 }
