@@ -1,90 +1,91 @@
-doctype html
--
-  const capitalize = string => {
-    const [first, ...last] = String(string)
-    return first.toUpperCase() + last.join('').toLowerCase()
-  }
-  const monthlist = [
-    'january', 'febuary', 'march', 'april',
-    'may', 'june', 'july', 'august',
-    'september', 'october', 'november', 'december'
-  ]
-mixin text-box(name, placeholder, value, type)
-  input(
-    type = type || 'text'
-    value = value
-    placeholder = placeholder
-    name = name
-    id = name
-    required
-  )&attributes(attributes)
+extends ../../lib/layout.pug
 mixin lb-text-box(name, ...args)
   label(for = name): block
   br
   +text-box(name, ...args)&attributes(attributes)
-html(lang = 'en')
-  head
-    meta(charset = 'utf-8')
-    title Sign Up
-    link(rel = 'shortcut icon' type = 'icon/png' href = 'icon/main.png')
-    link(rel = 'stylesheet' type = 'text/css' href = 'style/main.css')
-  body
-    h1.center Create your Google Account
-    form#main-form(name = 'sign-up' method = 'post' action = 'https://google.com/sign-up')
-      label(for = 'firstname') Name
-      br
-      +text-box('firstname', 'First Name').half
-      +text-box('lastname', 'Last Name').half
-      br
-      .email
-        +lb-text-box('email')
-          | Choose your username
-      br
-      +lb-text-box('password', false, false, 'password')
-        | Create a password
-      br
-      +lb-text-box('re-password', false, false, 'password')
-        | Confirm your password
-      br
-      label(for = 'birthday-day') Birthday
-      br
-      select#birthday-month(name = 'birthday-month').short
-        option(value hidden checked) Month
-        each month in monthlist
-          option(value = month)= capitalize(month)
-      +text-box('birthday-day', 'Day').short.number.integer
-      +text-box('birthday-year', 'Year').short.number.integer
-      br
-      label(for = 'gender') Gender
-      br
-      select#gender(name = 'gender')
-        option(value hidden checked) I am...
-        option(value = 'male' checked) Male
-        option(value = 'female') Female
-        option(value = 'other') Other
-        option(value = 'secret') Rather not say
-      br
-      +lb-text-box('phone-number', '+84').number.integer.phone
-        | Mobile phone
-      br
-      .email
-        +lb-text-box('current-email')
-          | Your current e-mail address
-      br
-      label(for = 'location') Location
-      br
-      select#location(name = 'location')
-        -
-          const location = {
-            vi: 'Viet Nam',
-            en: 'British',
-            us: 'U.S.A',
-            cn: 'China',
-            jp: 'Japan',
-            fr: 'France'
-          }
-        each content, value in location
-          option(value = value)= content
-      br
-      button#submit-button(type = 'submit') Next step
-    script(type = 'text/javascript' src = 'script/main.js')
+block everything
+  -
+    const capitalize = string => {
+      const [first, ...last] = String(string)
+      return first.toUpperCase() + last.join('').toLowerCase()
+    }
+    const monthlist = [
+      'january', 'febuary', 'march', 'april',
+      'may', 'june', 'july', 'august',
+      'september', 'october', 'november', 'december'
+    ]
+  mixin text-box(name, placeholder, value, type)
+    input(
+      type = type || 'text'
+      value = value
+      placeholder = placeholder
+      name = name
+      id = name
+      required
+    )&attributes(attributes)
+  html(lang = 'en')
+    head
+      meta(charset = 'utf-8')
+      title Sign Up
+      link(rel = 'shortcut icon' type = 'icon/png' href = 'icon/main.png')
+      link(rel = 'stylesheet' type = 'text/css' href = 'style/main.css')
+    body
+      h1.center Create your Google Account
+      form#main-form(name = 'sign-up' method = 'post' action = 'https://google.com/sign-up')
+        label(for = 'firstname') Name
+        br
+        +text-box('firstname', 'First Name').half
+        +text-box('lastname', 'Last Name').half
+        br
+        .email
+          +lb-text-box('email')
+            | Choose your username
+        br
+        +lb-text-box('password', false, false, 'password')
+          | Create a password
+        br
+        +lb-text-box('re-password', false, false, 'password')
+          | Confirm your password
+        br
+        label(for = 'birthday-day') Birthday
+        br
+        select#birthday-month(name = 'birthday-month').short
+          option(value hidden checked) Month
+          each month in monthlist
+            option(value = month)= capitalize(month)
+        +text-box('birthday-day', 'Day').short.number.integer
+        +text-box('birthday-year', 'Year').short.number.integer
+        br
+        label(for = 'gender') Gender
+        br
+        select#gender(name = 'gender')
+          option(value hidden checked) I am...
+          option(value = 'male' checked) Male
+          option(value = 'female') Female
+          option(value = 'other') Other
+          option(value = 'secret') Rather not say
+        br
+        +lb-text-box('phone-number', '+84').number.integer.phone
+          | Mobile phone
+        br
+        .email
+          +lb-text-box('current-email')
+            | Your current e-mail address
+        br
+        label(for = 'location') Location
+        br
+        select#location(name = 'location')
+          -
+            const location = {
+              vi: 'Viet Nam',
+              en: 'British',
+              us: 'U.S.A',
+              cn: 'China',
+              jp: 'Japan',
+              fr: 'France'
+            }
+          each content, value in location
+            option(value = value)= content
+        br
+        button#submit-button(type = 'submit') Next step
+      script(type = 'text/javascript' src = 'script/main.js')
