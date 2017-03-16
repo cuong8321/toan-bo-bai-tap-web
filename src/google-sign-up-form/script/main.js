@@ -30,7 +30,7 @@ const validate = {
     integer: string => parseInt(string) === Number(string),
     positive: string => Number(string) > 0,
     phone: string =>
-      string.length > MIN_PHONE_LENGTH && /^[0-9]$/.test(string),
+      string.length > MIN_PHONE_LENGTH && /^[0-9]*$/.test(string),
     email: string => {
       const array = string.split('@')
       return array.length === 2 && array.every(validate.fn.username)
