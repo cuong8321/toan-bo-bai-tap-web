@@ -12,10 +12,14 @@ function main (window) {
   const allWrapper = document.createElement('div')
   const imageContainer = document.createElement('div')
   const changeBorderContainer = document.createElement('div')
+  const headingContainer = document.createElement('div')
+  const changeHeadingContainer = document.createElement('div')
 
   body.appendChild(allWrapper)
   allWrapper.appendChild(imageContainer)
   allWrapper.appendChild(changeBorderContainer)
+  allWrapper.appendChild(headingContainer)
+  allWrapper.appendChild(changeHeadingContainer)
 
   assign(allWrapper.style, {
     margin: 'auto',
