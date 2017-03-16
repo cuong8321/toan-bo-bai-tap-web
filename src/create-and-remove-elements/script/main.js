@@ -2,7 +2,7 @@ main(window)
 
 function main (window) {
   'use strict'
-  const {Image} = window
+  const {document, Image} = window
 
   const imageContainer = document.createElement('div')
 
