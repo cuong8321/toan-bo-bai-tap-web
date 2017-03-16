@@ -3,23 +3,15 @@ main(window)
 function main (window) {
   'use strict'
   const {assign} = Object
-  const {document, Image} = window
+  const {document} = window
   const {body} = document
   const IMG_CONTAINER_COLS = 4
   const IMG_SIZE = 256
   const IMG_SPACING = 4
 
-  const allWrapper = document.createElement('div')
-  const imageContainer = document.createElement('div')
-  const changeBorderContainer = document.createElement('div')
-  const headingContainer = document.createElement('div')
-  const changeHeadingContainer = document.createElement('div')
-
-  body.appendChild(allWrapper)
-  allWrapper.appendChild(imageContainer)
-  allWrapper.appendChild(changeBorderContainer)
-  allWrapper.appendChild(headingContainer)
-  allWrapper.appendChild(changeHeadingContainer)
+  const allWrapper = createChildElement()
+  const imageContainer = createChildElement(allWrapper)
+  const changeBorderContainer = createChildElement(allWrapper)
 
   assign(allWrapper.style, {
     margin: 'auto',
@@ -31,26 +23,47 @@ function main (window) {
   })
 
   for (let i = 0; i !== 8; ++i) {
-    const image = new Image(IMG_SIZE, IMG_SIZE)
-    const {style} = image
-    imageContainer.appendChild(image)
-    image.src = `image/${i}.jpg`
-    style.margin = style.padding = `${IMG_SPACING >> 1}px`
+    const src = `image/${i}.jpg`
+    const width = IMG_SIZE
+    const height = IMG_SIZE
+    const halfspacing = `${IMG_SPACING >> 1}px`
+    const style = {margin: halfspacing, padding: halfspacing}
+    createChildElement(imageContainer, 'img', {attributes: {src, width, height}, style})
   }
 
-  const changeBorderInput = document.createElement('input')
-  changeBorderContainer.appendChild(changeBorderInput)
-  changeBorderInput.addEventListener('change', performChangeBorder, false)
-  changeBorderInput.type = 'text'
-  changeBorderInput.value = ''
-  changeBorderInput.placeholder = 'Image CSS border (e.g. 1px solid black)'
-  changeBorderInput.style.width = IMG_SIZE + 'px'
+  const changeBorderInput = createChildElement(
+    changeBorderContainer,
+    'input',
+    {
+      events: {change: performChangeBorder},
+      properties: {value: '', placeholder: 'Image CSS border (e.g. 1px solid black)'},
+      style: {width: IMG_SIZE + 'px'}
+    }
+  )
 
-  const changeBorderLink = document.createElement('a')
-  changeBorderContainer.appendChild(changeBorderLink)
-  changeBorderLink.textContent = 'Change Border'
-  changeBorderLink.href = '#'
-  changeBorderLink.addEventListener('click', performChangeBorder, false)
+  createChildElement(
+    changeBorderContainer,
+    'a',
+    {
+      events: {click: performChangeBorder},
+      properties: {textContent: 'Change Border', href: '#'}
+    }
+  )
+
+  function createChildElement (container = body, tag = 'div', custom = {}) {
+    const child = document.createElement(tag)
+    container.appendChild(child)
+    const {attributes = {}, properties = {}, style = {}, events = {}} = custom
+    assign(child, properties)
+    for (const name in attributes) {
+      child.setAttribute(name, attributes[name])
+    }
+    assign(child.style, style)
+    for (const type in events) {
+      child.addEventListener(type, events[type], false)
+    }
+    return child
+  }
 
   function performChangeBorder () {
     const {value} = changeBorderInput
