@@ -1,0 +1,11 @@
+extends ../../lib/layout.pug
+
+block everything
+  html
+    head
+      meta(charset = 'utf-8')
+      title List with Checkboxes
+      +style('style/main.css')
+    body
+      #list-container: ul#list
+      script(type = 'text/javascript' src = 'script/main.js' async)
