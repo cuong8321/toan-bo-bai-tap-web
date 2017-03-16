@@ -12,6 +12,8 @@ function main (window) {
   const allWrapper = createChildElement()
   const imageContainer = createChildElement(allWrapper)
   const changeBorderContainer = createChildElement(allWrapper)
+  const headingContainer = createChildElement(allWrapper)
+  const changeHeadingContainer = createChildElement(allWrapper)
 
   assign(allWrapper.style, {
     margin: 'auto',
@@ -45,6 +47,49 @@ function main (window) {
     {
       events: {click: performChangeBorder},
       properties: {textContent: 'Change Border', href: '#'}
+    }
+  )
+
+  const headingLevelInput = createChildElement(
+    changeHeadingContainer, 'input',
+    {
+      properties: {type: 'number', placeholder: 'h', value: 1},
+      style: {textAlign: 'right', width: IMG_SIZE + 'px'}
+    }
+  )
+
+  createChildElement(
+    changeHeadingContainer, 'button',
+    {
+      events: {
+        click () {
+          const {value} = headingLevelInput
+          createChildElement(
+            headingContainer, 'h' + value,
+            {properties: {textContent: 'Heading ' + value}}
+          )
+          window.scroll(0, body.scrollHeight)
+        }
+      },
+      properties: {
+        textContent: 'Create Heading Element'
+      }
+    }
+  )
+
+  createChildElement(
+    changeHeadingContainer, 'button',
+    {
+      events: {
+        click () {
+          headingContainer
+            .querySelectorAll('h' + headingLevelInput.value)
+            .forEach(child => child.remove())
+        }
+      },
+      properties: {
+        textContent: 'Clear Heading Element'
+      }
     }
   )
 
