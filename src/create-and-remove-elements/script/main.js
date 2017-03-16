@@ -32,8 +32,7 @@ function main (window) {
   }
 
   const changeBorderInput = createChildElement(
-    changeBorderContainer,
-    'input',
+    changeBorderContainer, 'input',
     {
       events: {change: performChangeBorder},
       properties: {value: '', placeholder: 'Image CSS border (e.g. 1px solid black)'},
@@ -42,8 +41,7 @@ function main (window) {
   )
 
   createChildElement(
-    changeBorderContainer,
-    'a',
+    changeBorderContainer, 'a',
     {
       events: {click: performChangeBorder},
       properties: {textContent: 'Change Border', href: '#'}
