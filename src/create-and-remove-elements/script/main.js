@@ -3,13 +3,14 @@ main(window)
 function main (window) {
   'use strict'
   const {document, Image} = window
+  const {body} = document
   const IMG_CONTAINER_COLS = 4
   const IMG_SIZE = 256
   const IMG_SPACING = 4
 
   const imageContainer = document.createElement('div')
 
-  document.body.appendChild(imageContainer)
+  body.appendChild(imageContainer)
 
   Object.assign(imageContainer.style, {
     columnCount: IMG_CONTAINER_COLS,
