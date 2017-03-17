@@ -95,6 +95,8 @@ function main (window) {
     del.classList.add('delete')
     del.addEventListener('click', () => li.remove(), false)
 
+    scrollToBottom()
+
     return li
   }
 
