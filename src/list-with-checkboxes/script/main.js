@@ -4,11 +4,13 @@ main(window)
 function main (window) {
   const {document, Math: {random}} = window
   const list = document.getElementById('list')
+  const listItemCount = document.getElementById('list-item-count')
 
   addABunchOfListItems()
 
   function addABunchOfListItems () {
-    return repeatAction(createListItem, 15)
+    const count = parseInt(listItemCount.value)
+    return isFinite(count) && repeatAction(createListItem, count)
   }
 
   function repeatAction (...args) {
