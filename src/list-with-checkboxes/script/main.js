@@ -23,7 +23,7 @@ function main (window) {
     checkbox.type = 'checkbox'
     checkbox.checked = false
     checkbox.classList.add('checkbox')
-    const text = document.createElement('span')
+    const text = document.createElement('a')
     li.appendChild(text)
     text.textContent = randomString(8)
     text.classList.add('text')
