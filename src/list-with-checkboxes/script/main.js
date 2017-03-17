@@ -84,6 +84,7 @@ function main (window) {
     li.appendChild(del)
     del.textContent = '[Delete]'
     del.classList.add('delete')
+    del.addEventListener('click', () => li.remove(), false)
 
     return li
   }
