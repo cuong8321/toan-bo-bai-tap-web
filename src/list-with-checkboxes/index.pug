@@ -7,5 +7,16 @@ block everything
       title List with Checkboxes
       +style('style/main.css')
     body
-      #list-container: ul#list
+      header#main-header: h1 List with Checkboxes
+      main#main
+        #control-panel
+          #checkbox-control-container
+            button#select-all Select All
+            button#unselect-all Unselect All
+            button#inverse-all Inverse All
+          #item-control-container
+            button#clear-selected Clear Selected Items
+            button#clear-all Clear All
+        #list-container: ul#list
+      footer#main-footer
       script(type = 'text/javascript' src = 'script/main.js' async)
