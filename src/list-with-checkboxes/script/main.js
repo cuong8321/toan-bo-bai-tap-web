@@ -77,7 +77,7 @@ function main (window) {
 
     const text = document.createElement('a')
     li.appendChild(text)
-    text.textContent = randomString(8)
+    text.textContent = randomString(32)
     text.classList.add('text')
 
     const del = document.createElement('a')
