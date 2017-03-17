@@ -18,7 +18,7 @@ function main (window) {
         checkbox.checked = false
       }
     },
-    'inverse-all': () => {
+    'invert-all': () => {
       for (const checkbox of list.querySelectorAll('.checkbox')) {
         checkbox.checked = !checkbox.checked
       }
