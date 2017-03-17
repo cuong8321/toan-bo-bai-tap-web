@@ -1,6 +1,14 @@
 extends ../../lib/layout.pug
 
 block everything
+  mixin num-input(id)
+    .input-container(id = id + '-container')
+      label(for = id)= dash2cspc(id)
+      input(id = id name = id type = 'text' placeholder = 'Insert number here...' required)
+      span.error.message(id = id + '-message')
+  mixin calc-button(name)
+    button(id = 'calc-' + name + '-button' type = 'button')= dash2cspc(name)
+
   html
     head
       meta(charset = 'utf-8')
