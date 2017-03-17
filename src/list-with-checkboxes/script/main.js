@@ -88,6 +88,7 @@ function main (window) {
     li.appendChild(text)
     text.textContent = randomString(32)
     text.classList.add('text')
+    text.addEventListener('click', () => window.alert(text.textContent), false)
 
     const del = document.createElement('a')
     li.appendChild(del)
