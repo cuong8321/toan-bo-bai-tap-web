@@ -1,6 +1,15 @@
 body
   font-family 'Roboto', 'Product Sans', 'Segoe UI', 'Verdana', 'Geneva', 'Arial', 'Helvetica', sans-serif
 
+:not(b):not(.bold)
+  font-weight normal
+
+:not(i):not(.italic)
+  font-style normal
+
+:not(u):not(.underline)
+  text-decoration none
+
 #list
   &, & li
     display block
