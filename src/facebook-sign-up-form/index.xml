@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Facebook Sign Up Form</title>
+    <link rel="shortcut icon" href="icon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 id="header">Sign Up</h1>
+    </header>
+    <main class="non-selectable">
+      <form id="main-form" method="post" action="https://m.facebook.com/reg/">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" placeholder="e.g. Hans" required="" />
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" placeholder="e.g. Solo" required="" />
+        <label for="reg_email__">E-mail or Phone:</label>
+        <input type="text" id="reg_email__" name="reg_email__" placeholder="e.g. someone@example.com, 2999-5804-106" required="" />
+        <label for="reg_email_confirmation__">Re-enter E-mail or Phone:</label>
+        <input type="text" id="reg_email_confirmation__" name="reg_email_confirmation__" placeholder="Re-enter E-mail or Phone" required="" />
+        <label for="reg_passwd__">New Password:</label>
+        <input type="password" id="reg_passwd__" name="red_passwd__" placeholder="Your password needs to be as strong as possible" required="" />
+        <label>Date of Birth:</label>
+        <div id="date-of-birth" class="three-inline-children" />
+        <label for="sex">Sex:</label>
+        <input type="radio" id="sex-female" name="sex" value="1" checked="" />
+        <label class="small" for="sex-female">Female</label>
+        <input type="radio" id="sex-male" name="sex" value="2" />
+        <label class="small" for="sex-male">Male</label>
+        <div class="little-space" />
+        <label for="action-url">Action URL:</label>
+        <input type="url" id="action-url" placeholder="e.g. mailto:someone@example.com, http://example.com" required="" />
+        <div class="little-space" />
+        <button id="submit-button" type="submit">Create Account</button>
+        <button id="reset-button" type="reset">Reset Form</button>
+      </form>
+    </main>
+    <footer>
+      <p id="copyright">
+        Copyright © 2017 Hoàng Văn Khải
+      </p>
+      <p id="license">
+        This software comes with absolutely no warranty. <br />
+        See the <a href="https://github.com/KSXGitHub/simple-form-to-sign-up-facebook/blob/master/LICENSE.md">MIT License</a> for details.
+      </p>
+      <p>
+        Source Code:
+        <a href="https://github.com/KSXGitHub/simple-form-to-sign-up-facebook">
+          GitHub/KSXGitHub/simple-form-to-sign-up-facebook
+        </a>
+      </p>
+    </footer>
+    <script type="text/javascript" src="script.js" />
+  </body>
+</html>
