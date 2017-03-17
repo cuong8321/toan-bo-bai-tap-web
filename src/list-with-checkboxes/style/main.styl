@@ -19,8 +19,13 @@ a
 :not(u):not(.underline):not(a)
   text-decoration none
 
-#control-panel *
-  display inline-block
+#control-panel
+  *
+    display inline-block
+  & > :not(:first-child)
+    margin-left 5px
+  & > :not(:last-child)
+    margin-right 5px
 
 #list
   margin 0px
