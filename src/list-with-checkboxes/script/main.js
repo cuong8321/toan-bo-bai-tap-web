@@ -23,14 +23,14 @@ function main (window) {
     checkbox.type = 'checkbox'
     checkbox.checked = false
     checkbox.classList.add('checkbox')
-    const span = document.createElement('span')
-    li.appendChild(span)
-    span.textContent = randomString(8)
-    span.classList.add('text')
-    const button = document.createElement('button')
-    li.appendChild(button)
-    button.textContent = 'Delete'
-    button.classList.add('delete')
+    const text = document.createElement('span')
+    li.appendChild(text)
+    text.textContent = randomString(8)
+    text.classList.add('text')
+    const del = document.createElement('button')
+    li.appendChild(del)
+    del.textContent = 'Delete'
+    del.classList.add('delete')
     return li
   }
 
