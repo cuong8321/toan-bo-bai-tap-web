@@ -47,6 +47,13 @@ function main (window) {
       .addEventListener('click', buttonFunctionMap[id], false)
   }
 
+  listItemCount.addEventListener(
+    'keydown',
+    ({keyCode, shiftKey, ctrlKey, altKey}) =>
+      keyCode !== 13 || shiftKey || ctrlKey || altKey || addABunchOfListItems(),
+    false
+  )
+
   addABunchOfListItems()
 
   function addABunchOfListItems () {
