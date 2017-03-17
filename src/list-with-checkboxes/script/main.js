@@ -6,6 +6,30 @@ function main (window) {
   const list = document.getElementById('list')
   const listItemCount = document.getElementById('list-item-count')
 
+  const buttonFunctionMap = {
+    'select-all': () => {
+      for (const checkbox of list.querySelectorAll('.checkbox')) {
+        checkbox.checked = true
+      }
+    },
+    'unselect-all': () => {
+      for (const checkbox of list.querySelectorAll('.checkbox')) {
+        checkbox.checked = false
+      }
+    },
+    'inverse-all': () => {
+      for (const checkbox of list.querySelectorAll('.checkbox')) {
+        checkbox.checked = !checkbox.checked
+      }
+    }
+  }
+
+  for (const id in buttonFunctionMap) {
+    document
+      .getElementById(id)
+      .addEventListener('click', buttonFunctionMap[id], false)
+  }
+
   addABunchOfListItems()
 
   function addABunchOfListItems () {
