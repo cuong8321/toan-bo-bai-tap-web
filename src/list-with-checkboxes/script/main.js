@@ -21,6 +21,11 @@ function main (window) {
       for (const checkbox of list.querySelectorAll('.checkbox')) {
         checkbox.checked = !checkbox.checked
       }
+    },
+    'random-select': () => {
+      for (const checkbox of list.querySelectorAll('.checkbox')) {
+        checkbox.checked = random() < 0.5
+      }
     }
   }
 
