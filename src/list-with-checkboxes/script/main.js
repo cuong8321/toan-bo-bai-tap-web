@@ -37,7 +37,8 @@ function main (window) {
     },
     'clear-all': () => {
       list.textContent = ''
-    }
+    },
+    'all-list-item': addABunchOfListItems
   }
 
   for (const id in buttonFunctionMap) {
