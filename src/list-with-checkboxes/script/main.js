@@ -68,19 +68,23 @@ function main (window) {
   function createListItem () {
     const li = document.createElement('li')
     list.appendChild(li)
+
     const checkbox = document.createElement('input')
     li.appendChild(checkbox)
     checkbox.type = 'checkbox'
     checkbox.checked = false
     checkbox.classList.add('checkbox')
+
     const text = document.createElement('a')
     li.appendChild(text)
     text.textContent = randomString(8)
     text.classList.add('text')
+
     const del = document.createElement('a')
     li.appendChild(del)
     del.textContent = '[Delete]'
     del.classList.add('delete')
+
     return li
   }
 
