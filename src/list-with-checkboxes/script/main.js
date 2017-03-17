@@ -26,6 +26,17 @@ function main (window) {
       for (const checkbox of list.querySelectorAll('.checkbox')) {
         checkbox.checked = random() < 0.5
       }
+    },
+    'clear-selected': () => {
+      Array
+        .from(list.children)
+        .forEach(
+          item =>
+            item.querySelector('.checkbox').checked && item.remove()
+        )
+    },
+    'clear-all': () => {
+      list.textContent = ''
     }
   }
 
