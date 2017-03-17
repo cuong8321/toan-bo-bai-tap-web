@@ -27,9 +27,9 @@ function main (window) {
     li.appendChild(text)
     text.textContent = randomString(8)
     text.classList.add('text')
-    const del = document.createElement('button')
+    const del = document.createElement('a')
     li.appendChild(del)
-    del.textContent = 'Delete'
+    del.textContent = '[Delete]'
     del.classList.add('delete')
     return li
   }
