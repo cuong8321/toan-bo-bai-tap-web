@@ -3,6 +3,7 @@ main(window)
 
 function main (window) {
   const {document, Math: {random}} = window
+  const {body} = document
   const list = document.getElementById('list')
   const listItemCount = document.getElementById('list-item-count')
 
@@ -54,11 +55,19 @@ function main (window) {
     false
   )
 
+  document
+    .getElementById('control-panel')
+    .addEventListener('click', scrollToBottom, false)
+
   addABunchOfListItems()
 
   function addABunchOfListItems () {
     const count = parseInt(listItemCount.value)
     return isFinite(count) && repeatAction(createListItem, count)
+  }
+
+  function scrollToBottom (delay = 0) {
+    setTimeout(() => window.scroll(0, body.scrollHeight), delay)
   }
 
   function repeatAction (...args) {
