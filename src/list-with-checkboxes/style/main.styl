@@ -23,10 +23,14 @@ a
   display inline-block
 
 #list
+  margin 0px
+  padding 0px
   &, & li
     display block
     width 100%
   li
+    &:hover
+      background rgba(0, 0, 0, 0.25)
     *
       display inline-block
     .delete
