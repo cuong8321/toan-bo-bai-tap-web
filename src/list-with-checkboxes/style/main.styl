@@ -10,6 +10,19 @@ a
   &:active
     color orange
 
+button
+  border 1px solid black
+  background #fff
+  padding 5px
+  &:hover
+    background #ddd
+  &:active
+    background #aaa
+
+input:not([type='checkbox']):not([type='radio'])
+  border 1px solid black
+  padding 5px
+
 :not(b):not(.bold)
   font-weight normal
 
@@ -46,3 +59,7 @@ a
     .delete
       position absolute
       right 10px
+
+#control-panel
+  margin-top 10px
+  margin-bottom 10px
