@@ -14,8 +14,8 @@ const cmpset = require('../lib/compare-set.js')
 const getModifiedDate = require('../lib/get-mtime.js')
 const createdOutputFiles = new Set()
 const mtimeTable = tryReadJSON(join(dep, 'mtime.json'))
-const markedChanges = getChangedFiles()
 const genDepsTree = assign({}, require('./dep-map-json.js'))
+const markedChanges = getChangedFiles()
 
 info(`\n${markedChanges.size} files are marked as modified.`)
 info('\nBUILDING...')
@@ -32,6 +32,7 @@ function getChangedFiles () {
   for (const filename in mtimeTable) {
     if (!existsSync(filename)) {
       delete mtimeTable[filename]
+      delete genDepsTree[filename]
       current.delete(filename)
     }
   }
@@ -82,11 +83,8 @@ function compile (source, target, level) {
         genDepsTree[source] = dependencies
         writeFileSync(target, body)
         info(`   ${isTargetExists ? '~~~' : '+++'} ` + target + ' (up to date)')
-        return true
-      } else {
-        info('▸▸ @ig ' + source + ' (already up to date)')
-        return true
       }
+      return true
     }) || updateVersion(source, target)
   } else {
     throw new Error(`Invalid type of fs entry: ${source}`)
@@ -110,8 +108,6 @@ function updateVersion (source, target) {
     info('▸▸ @cp ' + source)
     writeFileSync(target, readFileSync(source))
     info(`   ${isTargetExists ? '~~~' : '+++'} ` + target + ' (up to date)')
-  } else {
-    info('▸▸ @ig ' + source + ' (already up to date)')
   }
 }
 
