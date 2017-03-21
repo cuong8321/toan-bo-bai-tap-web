@@ -6,13 +6,13 @@ block everything
       meta(charset = 'utf-8')
       title List with Checkboxes
       +style('style/main.css')
-    
+
     body
       header#main-header: h1 List with Checkboxes
-      
+
       main#main
         #list-container: ul#list
-        
+
         #control-panel
           #checkbox-control-container
             button#select-all Select All
@@ -25,10 +25,10 @@ block everything
           #item-create-container
             input#list-item-count(type = 'number' value = '15' placeholder = 'Item Count')
             button#add-list-item Create
-      
+
       footer#main-footer
         hr
-        
+
         .copyright: :md(breaks)
           Copyright (c) 2017 Hoàng Văn Khải
           All right reserved
