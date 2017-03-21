@@ -3,18 +3,31 @@
   "version": "0.0.0",
   "description": "Imitate Google's Sign-Up form",
   "dependencies": {
-    "pug": "^2.0.0-beta11",
-    "stylus": "^0.54.0",
+    "fs-force": "^3.0.2",
     "just-try": "^2.0.1",
     "js-yaml": "^3.6.1",
+<<<<<<< HEAD
     "less": "^2.7.2",
     "jstransformer-markdown-it": "^2.0.0",
     "standard": "^8.4.0"
+=======
+    "jstransformer": "^1.0.0",
+    "jstransformer-pug": "^0.2.3",
+    "jstransformer-stylus": "^1.3.0",
+    "jstransformer-markdown-it": "^2.0.0",
+    "dependency-tree": "^5.9.0",
+    "deepmerge": "^1.3.2"
+>>>>>>> fb7833c8a8ae643a16654493545574e56506f89a
   },
   "scripts": {
     "compile": "node ./script/compile.js",
     "preview": "zsh -c 'sensible-browser ./out/index.html &; exit'",
+<<<<<<< HEAD
     "test": "standard && npm run compile"
+=======
+    "clean": "zsh script/clean.zsh",
+    "test": "npm run compile"
+>>>>>>> fb7833c8a8ae643a16654493545574e56506f89a
   },
   "author": "Hoàng Văn Khải <hvksmr1996@gmail.com>",
   "license": "MIT"
