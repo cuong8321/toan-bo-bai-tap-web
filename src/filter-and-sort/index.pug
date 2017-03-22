@@ -1,0 +1,61 @@
+-
+  const {join, dirname} = require('path')
+  const {readFileSync} = require('fs')
+  const yaml = require('js-yaml')
+  const markdown = require('markdown-it')().set({html: true, linkify: true})
+  const getYamlObject = name =>
+    yaml.load(readFileSync(join(dirname(source), 'resource', name + '.yaml').toString('utf8')))
+  const list = getYamlObject('list')
+  const genremap = getYamlObject('genre')
+
+html(lang = 'en')
+  head
+    meta(charset = 'utf-8')
+    title Filter and Sort elements
+    link(rel = 'stylesheet' href = 'style/master.css')
+
+  body
+    #control-panel
+      #search-container
+        label(for = 'search-textbox') Search For
+        input#search-textbox(type = 'search' placeholder = 'Filter Text')
+        label(for = 'search-column') By
+        select#search-column
+          option(value = 'all') All
+          option(value = 'key') Key
+          option(value = 'name') Name
+          option(value = 'genre') Genre
+          option(value = 'description') Description
+        input#case-sensitive-checkbox(type = 'checkbox')
+        label(for = 'case-sensitive-checkbox') Case Sensitive
+
+      #sort-container
+        label(for = 'sort-order') Sort
+        select#sort-order
+          option(value = 'ascending' checked) Ascending
+          option(value = 'descending') Descending
+        label(for = 'sort-column') By
+        select#sort-column
+          option(value = 'key' checked) Key
+          option(value = 'name') Name
+          option(value = 'genre') Genre
+          option(value = 'description') Description
+
+    table#list
+      thead
+        th.key Key
+        th.name Name
+        th.genre Genre
+        th.description Description
+
+      tbody
+        each info, key in list
+          -
+            const {name, genre, description} = info
+          tr(id = key)
+            td.key= key
+            td.name= name
+            td.genre= genre.map(key => genremap[key]).join(', ')
+            td.description!= markdown.renderInline(description)
+
+      script(type = 'text/javascript' src = 'script/main.js')
