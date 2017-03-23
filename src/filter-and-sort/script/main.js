@@ -36,8 +36,8 @@ function filter () {
     ? row => row
     : row => row.querySelector('.' + column)
   list.forEach(row => {
-    const content = getContentElement(row)
-    row.hidden = getText(content.textContent).indexOf(text) === -1
+    const content = getContentElement(row).textContent
+    row.hidden = getText(content).indexOf(text) === -1
   })
 }
 
