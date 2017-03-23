@@ -2,3 +2,7 @@ lib/layout.pug:
   - lib/dash-to-camel-and-spaces.js
   - lib/getlibfile.js
   - LICENSE.md
+
+src/cuong/search/index.pug:
+  - lib/getlibfile.js
+  - lib/cuong/search/list.yaml

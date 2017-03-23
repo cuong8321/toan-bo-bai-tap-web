@@ -1,0 +1,26 @@
+-
+  const yaml = require('js-yaml')
+  const getlibfile = getlib('getlibfile')
+  const yamlsrc = getlibfile('cuong/search/list.yaml')
+  const list = yaml.load(yamlsrc)
+
+doctype html
+html
+  head
+    meta(charset = 'utf-8')
+    title
+
+  body
+    div#search-container
+      input#search-textbox(type = 'text')
+      button#search-button( onclick="search()") Filter
+      <br>
+      input#thuonghoa(type = 'checkbox')
+      label(for = 'thuonghoa') Phân biệt chữ thường & chữ hoa 
+      output#output
+    div#search-result
+      ul
+        each flower in list
+          li= flower
+
+    script(type = 'text/javascript' src = 'script.js')
