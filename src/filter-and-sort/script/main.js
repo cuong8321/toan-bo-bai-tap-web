@@ -4,11 +4,11 @@ const searchColumn = document.getElementById('search-column')
 const caseSensitiveCheckbox = document.getElementById('case-sensitive-checkbox')
 const sortOrder = document.getElementById('sort-order')
 const sortColumn = document.getElementById('sort-column')
-const getList = () => Array.from(document.querySelectorAll('table tr'))
+const getList = () => Array.from(document.querySelectorAll('table tbody tr'))
 
 searchTextBox.addEventListener('keydown', filter, false)
 searchTextBox.addEventListener('change', filter, false)
-searchTextBox.addEventListener('paste', filter, false)
+searchTextBox.addEventListener('paste', setTimeout.bind(window, filter), false)
 searchColumn.addEventListener('change', filter, false)
 caseSensitiveCheckbox.addEventListener('change', filter, false)
 
@@ -41,8 +41,8 @@ function sort () {
   const order = sortfunc[sortOrder.value]
   const column = sortColumn.value
   const getColumnContent = tr => tr.querySelector('.' + column).textContent
-  const newlist = list.sort((before, after) => order(getColumnContent(before), getColumnContent(after)))
   const tbody = document.querySelector('table tbody')
+  list.sort((before, after) => order(getColumnContent(before), getColumnContent(after)))
   list.forEach(tr => tr.remove())
-  newlist.forEach(tr => tbody.appendChild(tr))
+  list.forEach(tr => tbody.appendChild(tr))
 }
