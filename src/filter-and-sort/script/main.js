@@ -15,6 +15,16 @@ caseSensitiveCheckbox.addEventListener('change', filter, false)
 sortOrder.addEventListener('change', sort, false)
 sortColumn.addEventListener('change', sort, false)
 
+const diacritic = {
+  a: 'áàảãạăắằẳẵặâấầẩẫậ',
+  d: 'đ',
+  e: 'éèẻẽẹêếềểễệ',
+  i: 'íìỉĩị',
+  o: 'óòỏõọôốồổỗộơờởỡợ',
+  u: 'úùủũụưứừửữự',
+  y: 'ýỳỷỹỵ'
+}
+
 const sortfunc = {
   ascending: (a, b) => a < b,
   descending: (a, b) => a > b
