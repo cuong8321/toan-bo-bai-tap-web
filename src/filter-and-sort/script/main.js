@@ -25,11 +25,6 @@ const diacritic = {
   y: 'ýỳỷỹỵ'
 }
 
-const sortfunc = {
-  ascending: (a, b) => a < b,
-  descending: (a, b) => a > b
-}
-
 function filter () {
   const list = getList()
   const getText = caseSensitiveCheckbox.checked
@@ -44,6 +39,11 @@ function filter () {
     const content = getContentElement(row)
     row.hidden = getText(content.textContent).indexOf(text) === -1
   })
+}
+
+const sortfunc = {
+  ascending: (a, b) => a < b,
+  descending: (a, b) => a > b
 }
 
 function sort () {
