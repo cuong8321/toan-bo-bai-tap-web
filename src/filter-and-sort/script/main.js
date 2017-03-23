@@ -24,6 +24,19 @@ const diacritic = {
   u: 'úùủũụưứừửữự',
   y: 'ýỳỷỹỵ'
 }
+for (const nonDiaChar in diacritic) {
+  diacritic[nonDiaChar.toUpperCase()] = diacritic[nonDiaChar].toUpperCase()
+}
+
+const reverseDiacritic = {}
+for (const nonDiaChar in diacritic) {
+  for (const diaChar of diacritic[nonDiaChar]) {
+    reverseDiacritic[diaChar] = nonDiaChar
+  }
+}
+
+const getNonDiaStr = diaString =>
+  Array.from(diaString).map(diaChar => reverseDiacritic[diaChar] || diaChar).join('')
 
 function filter () {
   const list = getList()
@@ -36,9 +49,15 @@ function filter () {
     ? row => row
     : row => row.querySelector('.' + column)
   list.forEach(row => {
-    const content = getContentElement(row).textContent
-    row.hidden = getText(content).indexOf(text) === -1
+    const content = getText(getContentElement(row).textContent)
+    row.hidden = check(content, text)
   })
+  function check (content, text) {
+    return notSubStr(content, text) && notSubStr(getNonDiaStr(content), text)
+  }
+  function notSubStr (container, substring) {
+    return container.indexOf(substring) === -1
+  }
 }
 
 const sortfunc = {
