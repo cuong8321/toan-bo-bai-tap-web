@@ -42,7 +42,15 @@ function sort () {
   const column = sortColumn.value
   const getColumnContent = tr => tr.querySelector('.' + column).textContent
   const tbody = document.querySelector('table tbody')
-  list.sort((before, after) => order(getColumnContent(before), getColumnContent(after)))
+  for (let i = 0; i !== list.length; ++i) {
+    for (let j = 0; j !== list.length; ++j) {
+      if (order(getColumnContent(list[i]), getColumnContent(list[j]))) {
+        const m = list[i]
+        list[i] = list[j]
+        list[j] = m
+      }
+    }
+  }
   list.forEach(tr => tr.remove())
   list.forEach(tr => tbody.appendChild(tr))
 }
