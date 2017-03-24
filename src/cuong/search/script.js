@@ -2,7 +2,7 @@
 const Input = document.getElementById('search-textbox')
 const CheckCase = document.getElementById('thuonghoa')
 Input.addEventListener('change', search, false)
-function search () {
+function search (){
   const array = document.querySelectorAll('li')
 
   const a = CheckCase.checked
