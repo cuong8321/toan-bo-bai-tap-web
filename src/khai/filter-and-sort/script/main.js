@@ -8,7 +8,7 @@ const getList = () => Array.from(document.querySelectorAll('table tbody tr'))
 
 searchTextBox.addEventListener('keydown', filter, false)
 searchTextBox.addEventListener('change', filter, false)
-searchTextBox.addEventListener('paste', setTimeout.bind(window, filter), false)
+searchTextBox.addEventListener('paste', () => setTimeout(filter), false)
 searchColumn.addEventListener('change', filter, false)
 caseSensitiveCheckbox.addEventListener('change', filter, false)
 
