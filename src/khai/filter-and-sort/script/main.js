@@ -4,7 +4,7 @@ const searchColumn = document.getElementById('search-column')
 const caseSensitiveCheckbox = document.getElementById('case-sensitive-checkbox')
 const sortOrder = document.getElementById('sort-order')
 const sortColumn = document.getElementById('sort-column')
-const getList = () => Array.from(document.querySelectorAll('table tbody tr'))
+const list = Array.from(document.querySelectorAll('table tbody tr'))
 
 searchTextBox.addEventListener('keydown', filter, false)
 searchTextBox.addEventListener('change', filter, false)
@@ -39,7 +39,6 @@ const getNonDiaStr = diaString =>
   Array.from(diaString).map(diaChar => reverseDiacritic[diaChar] || diaChar).join('')
 
 function filter () {
-  const list = getList()
   const getText = caseSensitiveCheckbox.checked
     ? string => string
     : string => string.toUpperCase()
@@ -66,7 +65,6 @@ const sortfunc = {
 }
 
 function sort () {
-  const list = getList()
   const order = sortfunc[sortOrder.value]
   const column = sortColumn.value
   const getColumnContent = tr => tr.querySelector('.' + column).textContent
