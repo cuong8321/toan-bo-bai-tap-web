@@ -46,7 +46,7 @@ function filter () {
   const column = searchColumn.value
   const getContentElement = column === 'all'
     ? row => row
-    : row => row.querySelector('.' + column)
+    : row => row.getElementsByClassName(column)
   list.forEach(row => {
     const content = getText(getContentElement(row).textContent)
     row.hidden = check(content, text)
